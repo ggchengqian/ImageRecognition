@@ -19,6 +19,24 @@ Windows编译ffmpeg
 
 ​		2、将QT安装目录下的mingw530_32(我的路径是D:\Qt\Qt5.9.1\Tools\mingw530_32) 复制到 msys的安装目录(我的是D:\msys64)；
 
-​		3、打开mingw32.exe，设置环境变量，编译；
+​		3、打开mingw32.exe，编译ffmpeg时需提前安装几个工具
 
-​			![image-20220801164529191](C:\Users\chengqian\AppData\Roaming\Typora\typora-user-images\image-20220801164529191.png)  
+```shell
+pacman -S diffutils 
+pacman -S pkg-config 
+pacman -S make
+```
+
+​		4、设置环境变量，用于找到gcc等编译器；
+
+```shell
+export PATH=$PATH:/d/msys64/mingw530_32/bin
+```
+
+​		4、编译ffmpeg；
+
+```shell
+./configure --prefix=../ffmpeg/ --disable-x86asm --enable-shared --enable-static
+make install -j16
+```
+
