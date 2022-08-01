@@ -21,18 +21,23 @@ Windows编译ffmpeg
 
 ​		3、打开mingw32.exe，编译ffmpeg时需提前安装几个工具
 
-​				pacman -S diffutils 
-
-​				pacman -S pkg-config 
-
-​				pacman -S make
+```shell
+		pacman -S diffutils 
+		pacman -S pkg-config 
+		pacman -S make
+```
 
 ​		4、设置环境变量，用于找到gcc等编译器；
 
-​			![image-20220801164529191](C:\Users\chengqian\AppData\Roaming\Typora\typora-user-images\image-20220801164529191.png)  
+```shell
+		export PATH=$PATH:/d/msys64/mingw530_32/bin
+```
 
 ​		4、编译ffmpeg；
 
-​			![image-20220801164832772](C:\Users\chengqian\AppData\Roaming\Typora\typora-user-images\image-20220801164832772.png)
+```shell
+		./configure --prefix=../ffmpeg/ --disable-x86asm --enable-shared --enable-static
+		make install -j16
+```
 
-![image-20220801165258175](C:\Users\chengqian\AppData\Roaming\Typora\typora-user-images\image-20220801165258175.png)
+
